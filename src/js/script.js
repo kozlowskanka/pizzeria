@@ -71,6 +71,11 @@
     cart: {
       defaultDeliveryFee: 20,
     },
+    db: {
+      url: '//localhost:3131',
+      product: 'product',
+      order: 'order',
+    },
   };
 
   const templates = {
@@ -339,7 +344,7 @@
       const thisCart = this;
 
       thisCart.products = [];
-      thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
+      // thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
 
       thisCart.getElements(element);
       thisCart.initActions();
@@ -380,9 +385,13 @@
       const thisCart = this;
       const index = thisCart.products.indexOf(cartProduct);
 
+      console.log('removed',index);
+      console.log('cartProduct', cartProduct);
+
       thisCart.products.splice(index);
       cartProduct.dom.wrapper.remove();
       thisCart.update();
+
     }
 
     add(menuProduct){
@@ -394,6 +403,7 @@
       thisCart.dom.productList.appendChild(generatedDOM);
       thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
       thisCart.update();
+      console.log('products list',thisCart.products);
     }
 
     update(){
@@ -401,13 +411,19 @@
 
       thisCart.totalNumber = 0;
       thisCart.subtotalPrice = 0;
+      thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
 
       for (let product of thisCart.products){
         thisCart.subtotalPrice += product.price;
         thisCart.totalNumber += product.amount;
       }
 
-      thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
+      if(thisCart.products.length >= 1){
+        thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
+      } else {
+        thisCart.deliveryFee = 0;
+        thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
+      };
 
       for (let key of thisCart.renderTotalsKeys){
         for(let elem of thisCart.dom[key]){
@@ -467,7 +483,7 @@
       });
 
       thisCartProduct.dom.wrapper.dispatchEvent(event);
-      console.log('remove clicked')
+      console.log('remove clicked');
     }
 
     initActions(){
@@ -488,14 +504,28 @@
     initData: function(){
       const thisApp = this;
 
-      thisApp.data = dataSource;
+      thisApp.data = {};
+      const url = settings.db.url + '/' + settings.db.product;
+
+      fetch(url)
+        .then(function(rawResponse){
+          return rawResponse.json();
+        })
+        .then(function(parsedResponse){
+          console.log('parsed response', parsedResponse);
+
+          thisApp.data.products = parsedResponse;
+          thisApp.initMenu();
+        });
+
+      console.log('thisApp.data', JSON.stringify(thisApp.data));
     },
 
     initMenu: function(){
       const thisApp = this;
 
       for(let productData in thisApp.data.products){
-        new Product(productData, thisApp.data.products[productData]);
+        new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]);
       }
     },
 
@@ -510,10 +540,10 @@
       const thisApp = this;
 
       thisApp.initData();
-      thisApp.initMenu();
       thisApp.initCart();
     },
   };
 
   app.init();
 }
+
