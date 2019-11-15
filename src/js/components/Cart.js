@@ -7,7 +7,6 @@ class Cart {
     const thisCart = this;
 
     thisCart.products = [];
-    // thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
 
     thisCart.getElements(element);
     thisCart.initActions();
