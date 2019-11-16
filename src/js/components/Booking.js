@@ -161,7 +161,14 @@ class Booking {
       people: thisBooking.peopleAmount.value,
       phone: thisBooking.dom.phone.value,
       address: thisBooking.dom.address.value,
+      starters: [],
     };
+
+    for (let starter of thisBooking.dom.starters) {
+      if (starter.checked){
+        payload.starters.push(starter.value);
+      }
+    }
 
     const options = {
       method: 'POST',
@@ -200,6 +207,8 @@ class Booking {
 
     thisBooking.dom.address = thisBooking.dom.wrapper.querySelector(select.booking.phone);
     thisBooking.dom.phone = thisBooking.dom.wrapper.querySelector(select.booking.address);
+
+    thisBooking.dom.starters = thisBooking.dom.wrapper.querySelectorAll(select.booking.starter);
 
     thisBooking.dom.form = thisBooking.dom.wrapper.querySelector(select.booking.form);
 
