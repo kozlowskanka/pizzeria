@@ -1,0 +1,127 @@
+/* Home Global*/
+
+.home-page-wrapper {
+  margin: ($base-size * 3.5) auto;
+  padding: ($base-size * 6) ($base-size * 4);
+  background: $color-light;
+  border-bottom: 1px solid lighten($color-dark, 70%);
+  border-radius: $radius;
+}
+
+/* Tiles */
+
+.pictures-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 90px;
+}
+
+.tile-image {
+
+  &-half {
+    position:relative;
+    flex: 0 0 50%;
+    height: 120px;
+    overflow: hidden;
+    margin-bottom: 5px;
+  }
+
+
+
+  &-half {
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &-full {
+    background-color: $color-main;
+    flex: 0 0 100%;
+    height: 120px;
+    position: relative;
+  }
+
+  &-inner {
+    @include center;
+}
+
+  &-title {
+    @extend .h1;
+    color: white;
+      position: relative;
+      padding: 0;
+      margin: 0;
+  }
+}
+
+/* Opinions */
+
+.opinions-wrapper {
+
+  margin-bottom: 90px;
+}
+
+.opinion {
+  display: flex;
+  margin-bottom: 40px;
+
+  &-image {
+    flex: 0 0 30%;
+    height: 150px;
+  }
+
+  &-image {
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &-description {
+    flex: 0 0 70%;
+    height: 150px;
+    padding: 0 20px;
+
+    > p:last-child {
+      font-style: italic;
+    }
+  }
+
+  &-title {
+    margin: 0;
+
+  }
+}
+
+/* Gallery */
+
+.gallery {
+
+  &-row {
+    display: flex;
+  }
+
+  &-image {
+        flex: 0 0 33,333%;
+        height: 150px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &-link {
+    a {
+      text-decoration: none;
+      color: $color-main;
+    }
+
+    a:hover {
+        color: $color-dark;
+      }
+    }
+  }
