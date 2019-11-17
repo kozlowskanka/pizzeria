@@ -1,4 +1,4 @@
-import { templates } from '../settings.js';
+import { templates, select } from '../settings.js';
 import { utils } from '../utils.js';
 
 class HomePage {
@@ -6,6 +6,8 @@ class HomePage {
     const thisHomePage = this;
 
     thisHomePage.render(homePage);
+    thisHomePage.getElements();
+    thisHomePage.initActions();
   }
 
   render(homePage){
@@ -15,14 +17,27 @@ class HomePage {
     const generatedHTML = templates.homePage();
 
     thisHomePage.dom = {};
-
     thisHomePage.dom.wrapper = homePage;
-
     thisHomePage.dom.wrapper.innerHTML = generatedHTML;
-
     thisHomePage.element = utils.createDOMFromHTML(generatedHTML);
 
-    thisHomePage.dom.wrapper.appendChild(thisHomePage.element);
+  }
+
+  getElements(){
+    const thisHomePage = this;
+
+    thisHomePage.links = thisHomePage.element.querySelectorAll(select.homePage.imageLinks);
+    console.log('order image',thisHomePage.links);
+  }
+
+  initActions(){
+    const thisHomePage = this;
+
+    for (let link of thisHomePage.links){
+      link.addEventListener('click', function(){
+
+      });
+    }
   }
 }
 

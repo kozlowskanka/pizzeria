@@ -21,7 +21,7 @@
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
         <div class="main-nav">
-            <a href="#home">Home</a>
+          <a href="#home">Home</a>
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
         </div>
@@ -74,25 +74,39 @@
     </section>
   </div>
 
-  <script id="#template-home-page" type="text/x-handlebars-template">
+  <script id="template-home-page" type="text/x-handlebars-template">
 
     <section class="pictures-wrapper">
-      <div class="tile-image-half">
-        <img src="images/pizza-1.jpg" alt="Pizza" title="Order online">
+        <a href="#order">
+          <div class="tile-image-half">
+              <img src="images/pizza-1.jpg" alt="Pizza" title="Order online">
+              <div class="tile-image-inner">
+                <h2 class="tile-image-title">ORDER ONLINE</h2>
+                <p>
+                  Delicious food delivered to your door
+                </p>
+              </div>
+          </div>
+        </a>
+        <a href="#booking">
+          <div class="tile-image-half">
+              <img src="images/pizza-2.jpg" alt="Pizza" title="Order online">
+              <div class="tile-image-inner">
+                <h2 class="tile-image-title">BOOK A TABLE</h2>
+                <p>
+                  Check available tables
+                </p>
+              </div>
+          </div>
+        </a>
+
+      <div class="tile-image-full" id="full">
         <div class="tile-image-inner">
-          <h2 class="tile-image-title">ORDER ONLINE</h4>
-        </div>
+          <h2 class="tile-image-title">OPENING HOURS</h2>
+          <p>
+            Tuesday - Sunday: 12PM - 12 AM
+          </p>
       </div>
-      <div class="tile-image-half">
-        <img src="images/pizza-2.jpg" alt="Pizza" title="Order online">
-        <div class="tile-image-inner">
-          <h2 class="tile-image-title">BOOK A TABLE</h4>
-        </div>
-      </div>
-      <div class="tile-image-full">
-        <div class="tile-image-inner">
-        <h2 class="tile-image-title">OPENING HOURS</h4>
-        </div>
       </div>
     </section>
 
@@ -104,10 +118,10 @@
         <div class="opinion-description">
           <h2 class="opinion-title">Opinion</h2>
           <p>
-              Lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum.
+            Lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum.
           </p>
           <p>
-              Margaret.
+            Margaret.
           </p>
         </div>
       </article>
@@ -134,86 +148,86 @@
         <div class="opinion-description">
           <h2 class="opinion-title">Opinion</h2>
           <p>
-              Lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum.
+            Lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum.
           </p>
           <p>
-              Roger.
+            Roger.
           </p>
         </div>
       </article>
     </section>
 
 
-    <section class="gallery">
-      <div class="gallery-row">
+      <section class="gallery">
+        <div class="gallery-row">
 
-        <div class="gallery-image">
-          <img src="images/pizza-4.jpg" alt="Pizza" title="picture">
-          <div class="gallery-image-overlay">
-            <div class="gallery-image-inner">
-              1
+          <div class="gallery-image">
+            <img src="images/pizza-4.jpg" alt="Pizza" title="picture">
+            <div class="gallery-image-overlay">
+              <div class="gallery-image-inner">
+                1
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="gallery-image">
-          <img src="images/pizza-5.jpg" alt="Pizza" title="picture">
-          <div class="gallery-image-overlay">
-            <div class="gallery-image-inner">
-              2
+          <div class="gallery-image">
+            <img src="images/pizza-5.jpg" alt="Pizza" title="picture">
+            <div class="gallery-image-overlay">
+              <div class="gallery-image-inner">
+                2
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="gallery-image">
-          <img src="images/pizza-6.jpg" alt="Pizza" title="picture">
-          <div class="gallery-image-overlay">
-            <div class="gallery-image-inner">
-              3
+          <div class="gallery-image">
+            <img src="images/pizza-6.jpg" alt="Pizza" title="picture">
+            <div class="gallery-image-overlay">
+              <div class="gallery-image-inner">
+                3
+              </div>
             </div>
           </div>
+
         </div>
 
-      </div>
+        <div class="gallery-row">
 
-      <div class="gallery-row">
-
-        <div class="gallery-image">
-          <img src="images/pizza-7.jpg" alt="Pizza" title="picture">
-          <div class="gallery-image-overlay">
-            <div class="gallery-image-inner">
-              4
+          <div class="gallery-image">
+            <img src="images/pizza-7.jpg" alt="Pizza" title="picture">
+            <div class="gallery-image-overlay">
+              <div class="gallery-image-inner">
+                4
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="gallery-image">
-          <img src="images/pizza-8.jpg" alt="Pizza" title="picture">
-          <div class="gallery-image-overlay">
-            <div class="gallery-image-inner">
-              5
+          <div class="gallery-image">
+            <img src="images/pizza-8.jpg" alt="Pizza" title="picture">
+            <div class="gallery-image-overlay">
+              <div class="gallery-image-inner">
+                5
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="gallery-image">
-          <img src="images/pizza-9.jpg" alt="Pizza" title="picture">
-          <div class="gallery-image-overlay">
-            <div class="gallery-image-inner">
-              6
+          <div class="gallery-image">
+            <img src="images/pizza-9.jpg" alt="Pizza" title="picture">
+            <div class="gallery-image-overlay">
+              <div class="gallery-image-inner">
+                6
+              </div>
             </div>
           </div>
+
         </div>
 
-      </div>
+        <p class="gallery-link">
+          <a href="#">
+            View more on Instagram
+          </a>
+        </p>
 
-      <p class="gallery-link">
-        <a href="#">
-          View more on Instagram
-        </a>
-      </p>
-
-    </section>
+      </section>
   </script>
 
     <script id="template-booking-widget" type="text/x-handlebars-template">

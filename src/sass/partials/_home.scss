@@ -11,49 +11,63 @@
 /* Tiles */
 
 .pictures-wrapper {
-  display: flex;
+
+  @include flex(row, center, space-between);
   flex-wrap: wrap;
-  justify-content: space-between;
   margin-bottom: 90px;
-}
 
-.tile-image {
-
-  &-half {
-    position:relative;
-    flex: 0 0 50%;
+  > a {
+    position: relative;
+    flex: 0 0 49%;
     height: 120px;
+    margin-bottom: 10px;
+    border-radius: $radius;
     overflow: hidden;
-    margin-bottom: 5px;
-  }
 
-
-
-  &-half {
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
   }
+}
 
+.tile-image {
   &-full {
     background-color: $color-main;
     flex: 0 0 100%;
     height: 120px;
     position: relative;
+    border-radius: $radius;
   }
 
   &-inner {
-    @include center;
-}
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, 0%);
+    transition: $transition;
+    height: 150px;
+    width: 100%;
+    @include flex(column, center, center);
+
+    &:hover {
+      top: -5%;
+      transition: $transition;
+    }
+
+    > p {
+      color: white;
+      margin-top: 40px;
+    }
+  }
 
   &-title {
     @extend .h1;
     color: white;
-      position: relative;
-      padding: 0;
-      margin: 0;
+    position: relative;
+    padding: 0;
+    margin: 0;
   }
 }
 
@@ -71,6 +85,8 @@
   &-image {
     flex: 0 0 30%;
     height: 150px;
+    border-radius: $radius;
+    overflow: hidden;
   }
 
   &-image {
@@ -80,7 +96,9 @@
       object-fit: cover;
     }
   }
+
   &-description {
+
     flex: 0 0 70%;
     height: 150px;
     padding: 0 20px;
@@ -92,21 +110,23 @@
 
   &-title {
     margin: 0;
-
   }
 }
 
 /* Gallery */
 
 .gallery {
-
   &-row {
-    display: flex;
+    @include flex(row, center, space-between);
   }
 
   &-image {
-        flex: 0 0 33,333%;
-        height: 150px;
+    flex: 0 0 32%;
+    height: 150px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
+
     img {
       width: 100%;
       height: 100%;
@@ -121,7 +141,7 @@
     }
 
     a:hover {
-        color: $color-dark;
-      }
+      color: $color-dark;
     }
   }
+}
