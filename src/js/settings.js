@@ -75,7 +75,11 @@ export const select = {
   },
   homePage: {
     imageLinks: '.pictures-wrapper a',
-  }
+  },
+  slider: {
+    opinion: '.opinion',
+    dot: '.dot',
+  },
 };
 
 export const classNames = {
@@ -97,6 +101,11 @@ export const classNames = {
   pages: {
     active: 'active',
   },
+  slider: {
+    slideVisible: 'flex',
+    slideHidden: 'none',
+    dotActive: 'dot-active',
+  }
 };
 
 export const settings = {

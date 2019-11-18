@@ -1,4 +1,4 @@
-import { templates, select } from '../settings.js';
+import { templates, classNames } from '../settings.js';
 import { utils } from '../utils.js';
 
 class HomePage {
@@ -6,8 +6,7 @@ class HomePage {
     const thisHomePage = this;
 
     thisHomePage.render(homePage);
-    thisHomePage.getElements();
-    thisHomePage.initActions();
+    thisHomePage.initSlider();
   }
 
   render(homePage){
@@ -21,22 +20,39 @@ class HomePage {
     thisHomePage.dom.wrapper.innerHTML = generatedHTML;
     thisHomePage.element = utils.createDOMFromHTML(generatedHTML);
 
+    console.log('element',thisHomePage.element);
+
   }
 
-  getElements(){
-    const thisHomePage = this;
+  initSlider(){
 
-    thisHomePage.links = thisHomePage.element.querySelectorAll(select.homePage.imageLinks);
-    console.log('order image',thisHomePage.links);
-  }
+    let slideIndex = 0;
+    showSlides();
 
-  initActions(){
-    const thisHomePage = this;
+    function showSlides() {
 
-    for (let link of thisHomePage.links){
-      link.addEventListener('click', function(){
+      let i;
+      const slides = document.getElementsByClassName('opinion'); // select.slider.opinion
+      const dots = document.getElementsByClassName('dot'); // select.slider.dot
 
-      });
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = classNames.slider.slideHidden;
+      }
+
+      slideIndex++;
+
+      if (slideIndex > slides.length) {
+        slideIndex = 1;
+      }
+
+      slides[slideIndex-1].style.display = classNames.slider.slideVisible;
+      setTimeout(showSlides, 2000);
+
+      for (let dot of dots) {
+        dot.classList.remove('dot-active'); //classNames.slider.dotActive
+      }
+
+      dots[slideIndex-1].classList.add('dot-active'); //classNames.slider.dotActive
     }
   }
 }

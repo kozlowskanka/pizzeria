@@ -10,7 +10,13 @@ const app = {
     const thisApp = this;
 
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
+
     thisApp.navLinks = document.querySelectorAll(select.nav.links);
+    console.log('navLinks', thisApp.navLinks);
+
+    thisApp.homePageLinks = document.querySelectorAll('.pictures-wrapper a');
+    console.log('homePageLinks', thisApp.homePageLinks);
+
 
     const idFromHash = window.location.hash.replace('#/', '');
 
@@ -38,6 +44,8 @@ const app = {
 
         /* change URL hash */
         window.location.hash = '#/' + id;
+
+        console.log('window',window.location.hash);
       });
     }
   },
@@ -47,20 +55,12 @@ const app = {
 
     /* add class active to matching pages, remove from non-matching */
     for(let page of thisApp.pages){
-      // if(page.id == pageId){
-      //   page.classList.add(classNames.pages.active);
-      // } else {
-      //   page.classList.remove(classNames.pages.active);
-      // }
+
       page.classList.toggle(classNames.pages.active, page.id == pageId);
     }
     /* add class active to matching links, remove from non-matching */
     for(let link of thisApp.navLinks){
-      // if(page.id == pageId){
-      //   page.classList.add(classNames.pages.active);
-      // } else {
-      //   page.classList.remove(classNames.pages.active);
-      // }
+
       link.classList.toggle(
         classNames.nav.active,
         link.getAttribute('href') == '#' + pageId

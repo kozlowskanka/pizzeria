@@ -80,7 +80,7 @@
 
 .opinion {
   display: flex;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 
   &-image {
     flex: 0 0 30%;
@@ -113,6 +113,24 @@
   }
 }
 
+.dots-wrapper {
+  width: 100%;
+  height: 20px;
+  @include flex(row, center, center);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  margin: 0 10px;
+  border-radius: 5px;
+  background-color: $color-dark;
+}
+
+.dot-active {
+  background-color: $color-main;
+}
+
 /* Gallery */
 
 .gallery {
@@ -126,11 +144,40 @@
     border-radius: 5px;
     overflow: hidden;
     margin-bottom: 10px;
+    position: relative;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    &-overlay {
+      opacity: 0;
+      height: 100%;
+      width: 100%;
+      background-color: $color-main;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      &:hover {
+        background-color: rgba(0,0,0,.5);
+        opacity: 1;
+      }
+    }
+
+    &-inner {
+      @include center;
+
+      i {
+        font-size: 40px;
+        color: $color-light;
+
+        &:hover {
+          color: $color-main;
+        }
+      }
     }
   }
 
@@ -145,3 +192,4 @@
     }
   }
 }
+
