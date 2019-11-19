@@ -9,14 +9,17 @@ const app = {
   initPages: function(){
     const thisApp = this;
 
+    thisApp.initHomePage();
+
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
 
     thisApp.navLinks = document.querySelectorAll(select.nav.links);
-    console.log('navLinks', thisApp.navLinks);
+    thisApp.homePageLinks = document.querySelectorAll(select.homePage.imageLinks);
 
-    thisApp.homePageLinks = document.querySelectorAll('.pictures-wrapper a');
-    console.log('homePageLinks', thisApp.homePageLinks);
+    const links = Array.prototype.slice.call(thisApp.navLinks).concat(Array.prototype.slice.call(thisApp.homePageLinks));
+    console.log('links',links);
 
+    thisApp.links = links;
 
     const idFromHash = window.location.hash.replace('#/', '');
 
@@ -31,7 +34,7 @@ const app = {
 
     thisApp.activatePage(pageMatchingHash);
 
-    for(let link of thisApp.navLinks){
+    for(let link of thisApp.links){
       link.addEventListener('click', function(event){
         const clickedElement = this;
         event.preventDefault();
@@ -59,7 +62,7 @@ const app = {
       page.classList.toggle(classNames.pages.active, page.id == pageId);
     }
     /* add class active to matching links, remove from non-matching */
-    for(let link of thisApp.navLinks){
+    for(let link of thisApp.links){
 
       link.classList.toggle(
         classNames.nav.active,
@@ -131,7 +134,6 @@ const app = {
     thisApp.initData();
     thisApp.initCart();
     thisApp.initBooking();
-    thisApp.initHomePage();
   },
 
 };
