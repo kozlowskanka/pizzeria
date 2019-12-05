@@ -146,6 +146,33 @@ class Booking {
         table.classList.remove(classNames.booking.tableSelected);
       }
     }
+
+    // RangeSlider - HourPicker
+
+    const numberOfBookedTables = thisBooking.booked[thisBooking.date][thisBooking.hour].length;
+    console.log('numberOfBookedTables', numberOfBookedTables);
+
+    thisBooking.dom.rangeSlider = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.slider);
+    console.log('thisBooking.dom.rangeSlider', thisBooking.dom.rangeSlider);
+
+    console.log('thisBooking.hour:', thisBooking.hour);
+
+    if(numberOfBookedTables <= 1 ) {
+      thisBooking.dom.rangeSlider.classList.remove(classNames.hourPicker.medium);
+      thisBooking.dom.rangeSlider.classList.remove(classNames.hourPicker.low);
+      thisBooking.dom.rangeSlider.classList.add(classNames.hourPicker.high);
+    }
+    else if (numberOfBookedTables == 2){
+      thisBooking.dom.rangeSlider.classList.remove(classNames.hourPicker.low);
+      thisBooking.dom.rangeSlider.classList.remove(classNames.hourPicker.high);
+      thisBooking.dom.rangeSlider.classList.add(classNames.hourPicker.medium);
+    }
+    else if (numberOfBookedTables >= 3){
+      thisBooking.dom.rangeSlider.classList.remove(classNames.hourPicker.high);
+      thisBooking.dom.rangeSlider.classList.remove(classNames.hourPicker.medium);
+      thisBooking.dom.rangeSlider.classList.add(classNames.hourPicker.low);
+    }
+
   }
 
   sendBooking(){
@@ -211,7 +238,6 @@ class Booking {
     thisBooking.dom.starters = thisBooking.dom.wrapper.querySelectorAll(select.booking.starter);
 
     thisBooking.dom.form = thisBooking.dom.wrapper.querySelector(select.booking.form);
-
   }
 
   initWidgets(){
@@ -255,6 +281,7 @@ class Booking {
         console.log('ActuallyBookedTables_without', actuallyBookedTables);
       }
     }
+
     else {
       alert('table booked');
     }

@@ -41,6 +41,7 @@ export const select = {
       wrapper: '.hour-picker',
       input: 'input[type="range"]',
       output: '.output',
+      slider: '.rangeSlider__horizontal',
     },
   },
   cart: {
@@ -105,7 +106,12 @@ export const classNames = {
     slideVisible: 'flex',
     slideHidden: 'none',
     dotActive: 'dot-active',
-  }
+  },
+  hourPicker: {
+    low: 'low-availability',
+    medium: 'medium-availability',
+    high: 'high-availability',
+  },
 };
 
 export const settings = {
@@ -128,7 +134,7 @@ export const settings = {
     tableIdAttribute: 'data-table',
   },
   db: {
-    url: '//localhost:3131',
+    url: '//' + window.location.hostname + (window.location.hostname=='localhost' ? ':3131' : ''),
     product: 'product',
     order: 'order',
     booking: 'booking',
