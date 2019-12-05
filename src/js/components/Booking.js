@@ -117,7 +117,10 @@ class Booking {
     const thisBooking = this;
 
     thisBooking.date = thisBooking.datePicker.value;
+    console.log('thisBooking.date', thisBooking.date);
+
     thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
+    console.log('thisBooking.hour', thisBooking.hour);
 
     let allAvailable = false;
 
@@ -149,30 +152,33 @@ class Booking {
 
     // RangeSlider - HourPicker
 
-    const numberOfBookedTables = thisBooking.booked[thisBooking.date][thisBooking.hour].length;
-    console.log('numberOfBookedTables', numberOfBookedTables);
-
     thisBooking.dom.rangeSlider = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.slider);
     console.log('thisBooking.dom.rangeSlider', thisBooking.dom.rangeSlider);
 
-    console.log('thisBooking.hour:', thisBooking.hour);
+    const numberOfBookedTables = thisBooking.booked[thisBooking.date][thisBooking.hour].length;
+    console.log('numberOfBookedTables', numberOfBookedTables);
 
     if(numberOfBookedTables <= 1 ) {
-      thisBooking.dom.rangeSlider.classList.remove(classNames.hourPicker.medium);
-      thisBooking.dom.rangeSlider.classList.remove(classNames.hourPicker.low);
-      thisBooking.dom.rangeSlider.classList.add(classNames.hourPicker.high);
+      thisBooking.dom.rangeSlider.style.background = 'green';
     }
     else if (numberOfBookedTables == 2){
-      thisBooking.dom.rangeSlider.classList.remove(classNames.hourPicker.low);
-      thisBooking.dom.rangeSlider.classList.remove(classNames.hourPicker.high);
-      thisBooking.dom.rangeSlider.classList.add(classNames.hourPicker.medium);
+      thisBooking.dom.rangeSlider.style.background = 'orange';
     }
     else if (numberOfBookedTables >= 3){
-      thisBooking.dom.rangeSlider.classList.remove(classNames.hourPicker.high);
-      thisBooking.dom.rangeSlider.classList.remove(classNames.hourPicker.medium);
-      thisBooking.dom.rangeSlider.classList.add(classNames.hourPicker.low);
+      thisBooking.dom.rangeSlider.style.background = 'red';
     }
 
+    // linear-gradient(to right, green 0%,green 25%,orange 25%,orange 50%,red 50%,red 90%,green 90%,green 100%);
+
+    const posibilities = [];
+
+    for (let i=0; i<24; i++) {
+
+      let posible = 100/24;
+      posibilities.push(i*posible);
+    }
+
+    console.log('possible', posibilities);
   }
 
   sendBooking(){
